@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="sanmi.labs.zemogaandroidtest.ui.detail.viewmodel.DetailPostViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/fragment_detail_post_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:text="@{viewModel.post.title}"
+                android:textColor="@color/black"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="sunt aut facere repellat provident occaecati excepturi optio reprehenderit" />
+
+            <TextView
+                android:id="@+id/fragment_detail_post_body"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@{viewModel.post.body}"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="@+id/fragment_detail_post_title"
+                app:layout_constraintStart_toStartOf="@+id/fragment_detail_post_title"
+                app:layout_constraintTop_toBottomOf="@+id/fragment_detail_post_title"
+                tools:text="quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto" />
+
+            <TextView
+                android:id="@+id/fragment_detail_post_user_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="@string/user_title"
+                android:textColor="@color/black"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/fragment_detail_post_body"
+                app:layout_constraintStart_toStartOf="@+id/fragment_detail_post_body"
+                app:layout_constraintTop_toBottomOf="@+id/fragment_detail_post_body" />
+
+            <TextView
+                android:id="@+id/fragment_detail_post_comments_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="@string/comments_title"
+                android:textColor="@color/black"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/fragment_detail_post_user_title"
+                app:layout_constraintStart_toStartOf="@+id/fragment_detail_post_user_title"
+                app:layout_constraintTop_toBottomOf="@+id/fragment_detail_post_user_title" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

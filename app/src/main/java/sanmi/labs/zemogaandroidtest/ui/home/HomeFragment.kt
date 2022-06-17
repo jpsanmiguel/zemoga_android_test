@@ -1,5 +1,6 @@
 package sanmi.labs.zemogaandroidtest.ui.home
 
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import sanmi.labs.zemogaandroidtest.MainActivity
 import sanmi.labs.zemogaandroidtest.databinding.FragmentHomeBinding
@@ -26,15 +27,25 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
                 postAdapter.submitList(it)
             }
         }
+
+        viewModel.post.observe(viewLifecycleOwner) {
+            it?.let {
+                findNavController().navigate(
+                    HomeFragmentDirections.actionHomeFragmentToDetailPostFragment(it)
+                )
+                viewModel.doneNavigatingToPostDetail()
+            }
+        }
     }
 
     private fun setUpToolbar() {
         (requireActivity() as MainActivity).title = "Posts"
-        setHasOptionsMenu(true)
     }
 
     private fun setUpRecyclerView() {
-        postAdapter = PostAdapter(PostAdapter.OnClickListener {})
+        postAdapter = PostAdapter(PostAdapter.OnClickListener {
+            viewModel.navigateToPostDetail(it)
+        })
         val decoration = DividerItemDecoration(requireContext(), DividerItemDecoration.VERTICAL)
 
         binding.fragmentHomePostsRecyclerView.apply {

@@ -16,6 +16,10 @@ class HomeViewModel(private val postService: PostService) : BaseViewModel() {
     val posts: LiveData<List<Post>>
         get() = _posts
 
+    private val _post = MutableLiveData<Post?>()
+    val post: LiveData<Post?>
+        get() = _post
+
     init {
         _status.value = Status.Loading
         getPosts()
@@ -30,5 +34,13 @@ class HomeViewModel(private val postService: PostService) : BaseViewModel() {
                 Status.Failed(exception)
             }
         }
+    }
+
+    fun navigateToPostDetail(post: Post) {
+        _post.value = post
+    }
+
+    fun doneNavigatingToPostDetail() {
+        _post.value = null
     }
 }

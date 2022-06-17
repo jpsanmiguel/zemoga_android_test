@@ -27,10 +27,21 @@
             android:text="@{post.title}"
             android:textColor="@color/black"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/post_item_go_to_detail_icon"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="sunt aut facere repellat provident occaecati excepturi optio reprehenderit" />
+
+        <ImageView
+            android:id="@+id/post_item_go_to_detail_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_baseline_chevron_right_24"
+            android:contentDescription="@string/icon_go_to_post_detail" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
