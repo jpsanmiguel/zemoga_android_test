@@ -76,6 +76,66 @@
                     app:layout_constraintStart_toStartOf="@+id/fragment_detail_post_body"
                     app:layout_constraintTop_toBottomOf="@+id/fragment_detail_post_body" />
 
+                <LinearLayout
+                    android:id="@+id/fragment_detail_post_user_section"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintEnd_toEndOf="@+id/fragment_detail_post_user_title"
+                    app:layout_constraintStart_toStartOf="@+id/fragment_detail_post_user_title"
+                    app:layout_constraintTop_toBottomOf="@+id/fragment_detail_post_user_title">
+
+                    <TextView
+                        android:id="@+id/fragment_detail_post_user_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:text="@{@string/user_name(viewModel.postDetail.user.name)}"
+                        android:textSize="16sp"
+                        app:showIf="@{!viewModel.postDetail.user.name.empty}"
+                        tools:text="Name: Leanne Graham" />
+
+                    <TextView
+                        android:id="@+id/fragment_detail_post_user_username"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="@{@string/user_username(viewModel.postDetail.user.username)}"
+                        android:textSize="16sp"
+                        app:showIf="@{!viewModel.postDetail.user.username.empty}"
+                        tools:text="Username: Bret" />
+
+                    <TextView
+                        android:id="@+id/fragment_detail_post_user_email"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="@{@string/user_email(viewModel.postDetail.user.email)}"
+                        android:textSize="16sp"
+                        app:showIf="@{!viewModel.postDetail.user.email.empty}"
+                        tools:text="Email: Sincere@april.biz" />
+
+                    <TextView
+                        android:id="@+id/fragment_detail_post_user_phone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="@{@string/user_phone(viewModel.postDetail.user.phone)}"
+                        android:textSize="16sp"
+                        app:showIf="@{!viewModel.postDetail.user.phone.empty}"
+                        tools:text="Phone: 1-770-736-8031 x56442" />
+
+                    <TextView
+                        android:id="@+id/fragment_detail_post_user_website"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="@{@string/user_website(viewModel.postDetail.user.website)}"
+                        android:textSize="16sp"
+                        app:showIf="@{!viewModel.postDetail.user.website.empty}"
+                        tools:text="Website: hildegard.org" />
+                </LinearLayout>
+
                 <TextView
                     android:id="@+id/fragment_detail_post_comments_title"
                     android:layout_width="0dp"
@@ -87,7 +147,7 @@
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="@+id/fragment_detail_post_user_title"
                     app:layout_constraintStart_toStartOf="@+id/fragment_detail_post_user_title"
-                    app:layout_constraintTop_toBottomOf="@+id/fragment_detail_post_user_title" />
+                    app:layout_constraintTop_toBottomOf="@+id/fragment_detail_post_user_section" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/fragment_detail_post_comments"

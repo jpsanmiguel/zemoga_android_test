@@ -3,4 +3,9 @@
     <string name="user_title">User</string>
     <string name="comments_title">Comments</string>
     <string name="icon_go_to_post_detail">Icon go to post detail</string>
+    <string name="user_name">Name: %1$S</string>
+    <string name="user_username">Username: %1$S</string>
+    <string name="user_email">Email: %1$S</string>
+    <string name="user_phone">Phone: %1$S</string>
+    <string name="user_website">Website: %1$S</string>
 </resources>

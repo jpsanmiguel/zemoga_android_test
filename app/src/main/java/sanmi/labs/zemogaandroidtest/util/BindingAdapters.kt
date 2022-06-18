@@ -15,6 +15,11 @@ fun View.showIfSuccess(status: Status?) {
     )
 }
 
+@BindingAdapter("showIf")
+fun View.showIf(condition: Boolean) {
+    visibility = showIfConditionElseGone(condition)
+}
+
 private fun showIfConditionElseGone(condition: Boolean): Int {
     return if (condition) View.VISIBLE else View.GONE
 }

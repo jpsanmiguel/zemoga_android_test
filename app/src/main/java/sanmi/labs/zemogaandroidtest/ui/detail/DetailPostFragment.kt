@@ -20,6 +20,7 @@ class DetailPostFragment :
 
         viewModel.initViewModel(args.post)
 
+        setUpToolbar()
         setUpCommentsRecyclerView()
     }
 
@@ -30,6 +31,10 @@ class DetailPostFragment :
                 commentAdapter.submitList(it.comments)
             }
         }
+    }
+
+    private fun setUpToolbar() {
+        (requireActivity() as MainActivity).title = ""
     }
 
     private fun setUpCommentsRecyclerView() {
