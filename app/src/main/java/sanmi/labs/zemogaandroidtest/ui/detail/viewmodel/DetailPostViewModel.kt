@@ -22,6 +22,7 @@ class DetailPostViewModel(private val postService: PostService) : BaseViewModel(
         viewModelScope.launch {
             _postDetail.value = PostDetail(
                 post.id,
+                postService.getPostUser(post.userId).asDomainModel(),
                 post.title,
                 post.body,
                 postService.getPostComments(post.id).asDomainModel(),

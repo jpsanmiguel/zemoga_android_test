@@ -9,6 +9,7 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 import sanmi.labs.zemogaandroidtest.network.dto.CommentDTO
 import sanmi.labs.zemogaandroidtest.network.dto.PostDTO
+import sanmi.labs.zemogaandroidtest.network.dto.UserDTO
 
 interface PostService {
     @GET("posts")
@@ -16,6 +17,9 @@ interface PostService {
 
     @GET("posts/{id}/comments")
     suspend fun getPostComments(@Path("id") id: Long): List<CommentDTO>
+
+    @GET("users/{id}")
+    suspend fun getPostUser(@Path("id") id: Long): UserDTO
 
     companion object {
         private const val BASE_URL = "https://jsonplaceholder.typicode.com/"
