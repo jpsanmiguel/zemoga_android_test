@@ -16,6 +16,6 @@
         android:name="sanmi.labs.zemogaandroidtest.ui.detail.DetailPostFragment" >
         <argument
             android:name="post"
-            app:argType="sanmi.labs.zemogaandroidtest.model.Post" />
+            app:argType="sanmi.labs.zemogaandroidtest.domain.model.Post" />
     </fragment>
 </navigation>
