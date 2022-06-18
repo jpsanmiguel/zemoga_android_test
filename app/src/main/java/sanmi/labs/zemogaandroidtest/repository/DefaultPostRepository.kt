@@ -3,7 +3,9 @@ package sanmi.labs.zemogaandroidtest.repository
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Transformations
 import sanmi.labs.zemogaandroidtest.db.ApplicationDatabaseDao
+import sanmi.labs.zemogaandroidtest.db.entity.CommentEntity
 import sanmi.labs.zemogaandroidtest.db.entity.PostCommentCrossRef
+import sanmi.labs.zemogaandroidtest.db.entity.PostEntity
 import sanmi.labs.zemogaandroidtest.db.entity.asDomainModel
 import sanmi.labs.zemogaandroidtest.db.entity.getCommentsByPostId
 import sanmi.labs.zemogaandroidtest.model.Post
@@ -69,6 +71,19 @@ class PostRepository(
 
     suspend fun updatePost(post: Post) {
         dao.updatePost(post.asDatabaseModel())
+    }
+
+    suspend fun deletePost(postId: Long) {
+        dao.deleteComments(*getPostCommentEntities(postId).toTypedArray())
+        dao.deletePost(getPostEntity(postId))
+    }
+
+    private suspend fun getPostEntity(postId: Long): PostEntity {
+        return dao.getPost(postId)
+    }
+
+    private suspend fun getPostCommentEntities(postId: Long): List<CommentEntity> {
+        return dao.getPostWithComments(postId).comments
     }
 
     private suspend fun getPostComments(postId: Long): List<CommentDTO> {

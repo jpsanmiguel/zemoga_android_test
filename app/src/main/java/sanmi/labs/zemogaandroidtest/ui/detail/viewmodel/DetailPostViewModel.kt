@@ -60,4 +60,13 @@ class DetailPostViewModel(
             }
         }
     }
+
+    fun deletePost() {
+        viewModelScope.launch {
+            _postDetail.value?.id?.let {
+                postsRepository.deletePost(it)
+                _postDetail.value = null
+            }
+        }
+    }
 }

@@ -10,4 +10,5 @@
     <string name="user_website">Website: %1$S</string>
     <string name="toggle_favorite_post_icon">Favorite</string>
     <string name="favorite_post_icon_indicator">Favorite post icon indicator</string>
+    <string name="delete_post_icon">Delete</string>
 </resources>

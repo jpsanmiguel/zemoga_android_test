@@ -2,6 +2,7 @@ package sanmi.labs.zemogaandroidtest.db
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
+import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
@@ -10,6 +11,7 @@ import androidx.room.Update
 import sanmi.labs.zemogaandroidtest.db.entity.CommentEntity
 import sanmi.labs.zemogaandroidtest.db.entity.PostCommentCrossRef
 import sanmi.labs.zemogaandroidtest.db.entity.PostEntity
+import sanmi.labs.zemogaandroidtest.db.entity.PostWithComments
 import sanmi.labs.zemogaandroidtest.db.entity.UserEntity
 import sanmi.labs.zemogaandroidtest.db.entity.UserWithPostsAndComments
 
@@ -34,6 +36,19 @@ interface ApplicationDatabaseDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertPostCommentCrossRef(postCommentCrossRef: PostCommentCrossRef)
 
+    @Query("SELECT * FROM post_table WHERE postId = :postId")
+    suspend fun getPost(postId: Long): PostEntity
+
     @Update
     suspend fun updatePost(post: PostEntity)
+
+    @Delete
+    suspend fun deletePost(post: PostEntity)
+
+    @Delete
+    suspend fun deleteComments(vararg comments: CommentEntity)
+
+    @Transaction
+    @Query("SELECT * FROM post_table WHERE postId = :postId")
+    suspend fun getPostWithComments(postId: Long): PostWithComments
 }

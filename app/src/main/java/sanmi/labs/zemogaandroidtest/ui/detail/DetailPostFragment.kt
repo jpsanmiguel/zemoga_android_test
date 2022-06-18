@@ -4,6 +4,7 @@ import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import androidx.core.content.ContextCompat
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import sanmi.labs.zemogaandroidtest.MainActivity
@@ -32,10 +33,12 @@ class DetailPostFragment :
 
     override fun subscribeUi() {
         viewModel.postDetail.observe(viewLifecycleOwner) {
-            it?.let {
+            if (it != null) {
                 showMenuAndUpdateFavorite()
                 (requireActivity() as MainActivity).title = it.title
                 commentAdapter.submitList(it.comments)
+            } else {
+                findNavController().popBackStack()
             }
         }
     }
@@ -59,6 +62,7 @@ class DetailPostFragment :
                 )
                 it.isVisible = true
             }
+            menu.findItem(R.id.post_detail_menu_delete).isVisible = true
         }
     }
 
@@ -73,7 +77,10 @@ class DetailPostFragment :
             updateFavoriteIcon(item, viewModel.togglePostIsFavorite())
             true
         }
-
+        R.id.post_detail_menu_delete -> {
+            viewModel.deletePost()
+            true
+        }
         else -> {
             super.onOptionsItemSelected(item)
         }
