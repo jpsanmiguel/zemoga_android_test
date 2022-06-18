@@ -1,4 +1,4 @@
-package sanmi.labs.zemogaandroidtest.db.entity.typeconverters
+package sanmi.labs.zemogaandroidtest.data.source.local.entity.typeconverters
 
 import androidx.room.TypeConverter
 import java.util.Date

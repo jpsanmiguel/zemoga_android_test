@@ -3,7 +3,7 @@ package sanmi.labs.zemogaandroidtest.ui.detail.adapter
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
-import sanmi.labs.zemogaandroidtest.model.Comment
+import sanmi.labs.zemogaandroidtest.domain.model.Comment
 import sanmi.labs.zemogaandroidtest.ui.detail.viewholder.CommentViewHolder
 
 class CommentAdapter : ListAdapter<Comment, CommentViewHolder>(DiffCallback) {

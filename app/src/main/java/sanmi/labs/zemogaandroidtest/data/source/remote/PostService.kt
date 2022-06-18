@@ -1,4 +1,4 @@
-package sanmi.labs.zemogaandroidtest.network
+package sanmi.labs.zemogaandroidtest.data.source.remote
 
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -7,9 +7,9 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Path
-import sanmi.labs.zemogaandroidtest.network.dto.CommentDTO
-import sanmi.labs.zemogaandroidtest.network.dto.PostDTO
-import sanmi.labs.zemogaandroidtest.network.dto.UserDTO
+import sanmi.labs.zemogaandroidtest.data.source.remote.dto.CommentDTO
+import sanmi.labs.zemogaandroidtest.data.source.remote.dto.PostDTO
+import sanmi.labs.zemogaandroidtest.data.source.remote.dto.UserDTO
 
 interface PostService {
     @GET("posts")

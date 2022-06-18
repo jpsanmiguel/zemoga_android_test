@@ -1,8 +1,8 @@
-package sanmi.labs.zemogaandroidtest.db.entity
+package sanmi.labs.zemogaandroidtest.data.source.local.entity
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import sanmi.labs.zemogaandroidtest.model.Comment
+import sanmi.labs.zemogaandroidtest.domain.model.Comment
 
 @Entity(tableName = "comment_table")
 data class CommentEntity(

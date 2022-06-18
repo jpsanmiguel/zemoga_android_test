@@ -1,6 +1,6 @@
-package sanmi.labs.zemogaandroidtest.network.dto
+package sanmi.labs.zemogaandroidtest.data.source.remote.dto
 
-import sanmi.labs.zemogaandroidtest.model.User
+import sanmi.labs.zemogaandroidtest.domain.model.User
 
 
 data class UserDTO(

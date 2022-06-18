@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import sanmi.labs.zemogaandroidtest.databinding.PostItemBinding
-import sanmi.labs.zemogaandroidtest.model.Post
+import sanmi.labs.zemogaandroidtest.domain.model.Post
 import sanmi.labs.zemogaandroidtest.ui.home.adapter.PostAdapter
 
 class PostViewHolder private constructor(

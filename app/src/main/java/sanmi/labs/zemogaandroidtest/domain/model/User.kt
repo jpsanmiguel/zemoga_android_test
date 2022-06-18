@@ -1,6 +1,6 @@
-package sanmi.labs.zemogaandroidtest.model
+package sanmi.labs.zemogaandroidtest.domain.model
 
-import sanmi.labs.zemogaandroidtest.db.entity.UserEntity
+import sanmi.labs.zemogaandroidtest.data.source.local.entity.UserEntity
 
 data class User(
     val id: Long,

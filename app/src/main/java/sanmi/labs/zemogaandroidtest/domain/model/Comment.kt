@@ -1,4 +1,4 @@
-package sanmi.labs.zemogaandroidtest.model
+package sanmi.labs.zemogaandroidtest.domain.model
 
 data class Comment(
     val id: Long,

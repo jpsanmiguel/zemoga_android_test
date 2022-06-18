@@ -1,8 +1,8 @@
-package sanmi.labs.zemogaandroidtest.model
+package sanmi.labs.zemogaandroidtest.domain.model
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
-import sanmi.labs.zemogaandroidtest.db.entity.PostEntity
+import sanmi.labs.zemogaandroidtest.data.source.local.entity.PostEntity
 import java.util.Date
 
 @Parcelize

@@ -1,15 +1,15 @@
-package sanmi.labs.zemogaandroidtest.db
+package sanmi.labs.zemogaandroidtest.data.source.local
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import sanmi.labs.zemogaandroidtest.db.entity.CommentEntity
-import sanmi.labs.zemogaandroidtest.db.entity.PostCommentCrossRef
-import sanmi.labs.zemogaandroidtest.db.entity.PostEntity
-import sanmi.labs.zemogaandroidtest.db.entity.UserEntity
-import sanmi.labs.zemogaandroidtest.db.entity.typeconverters.Converters
+import sanmi.labs.zemogaandroidtest.data.source.local.entity.CommentEntity
+import sanmi.labs.zemogaandroidtest.data.source.local.entity.PostCommentCrossRef
+import sanmi.labs.zemogaandroidtest.data.source.local.entity.PostEntity
+import sanmi.labs.zemogaandroidtest.data.source.local.entity.UserEntity
+import sanmi.labs.zemogaandroidtest.data.source.local.entity.typeconverters.Converters
 
 @Database(
     entities = [PostEntity::class, UserEntity::class, CommentEntity::class, PostCommentCrossRef::class],

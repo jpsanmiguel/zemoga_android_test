@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import sanmi.labs.zemogaandroidtest.databinding.CommentItemBinding
-import sanmi.labs.zemogaandroidtest.model.Comment
+import sanmi.labs.zemogaandroidtest.domain.model.Comment
 
 class CommentViewHolder private constructor(
     private val binding: CommentItemBinding

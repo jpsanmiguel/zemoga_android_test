@@ -1,4 +1,4 @@
-package sanmi.labs.zemogaandroidtest.db.entity
+package sanmi.labs.zemogaandroidtest.data.source.local.entity
 
 import androidx.room.Entity
 

@@ -1,8 +1,8 @@
-package sanmi.labs.zemogaandroidtest.db.entity
+package sanmi.labs.zemogaandroidtest.data.source.local.entity
 
 import androidx.room.Embedded
 import androidx.room.Relation
-import sanmi.labs.zemogaandroidtest.model.Comment
+import sanmi.labs.zemogaandroidtest.domain.model.Comment
 
 data class UserWithPostsAndComments(
     @Embedded val user: UserEntity,

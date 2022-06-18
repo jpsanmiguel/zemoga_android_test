@@ -1,4 +1,4 @@
-package sanmi.labs.zemogaandroidtest.model
+package sanmi.labs.zemogaandroidtest.domain.model
 
 data class PostDetail(
     val id: Long,

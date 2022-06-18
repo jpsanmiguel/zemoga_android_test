@@ -1,4 +1,4 @@
-package sanmi.labs.zemogaandroidtest.db
+package sanmi.labs.zemogaandroidtest.data.source.local
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
@@ -8,12 +8,12 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Transaction
 import androidx.room.Update
-import sanmi.labs.zemogaandroidtest.db.entity.CommentEntity
-import sanmi.labs.zemogaandroidtest.db.entity.PostCommentCrossRef
-import sanmi.labs.zemogaandroidtest.db.entity.PostEntity
-import sanmi.labs.zemogaandroidtest.db.entity.PostWithComments
-import sanmi.labs.zemogaandroidtest.db.entity.UserEntity
-import sanmi.labs.zemogaandroidtest.db.entity.UserWithPostsAndComments
+import sanmi.labs.zemogaandroidtest.data.source.local.entity.CommentEntity
+import sanmi.labs.zemogaandroidtest.data.source.local.entity.PostCommentCrossRef
+import sanmi.labs.zemogaandroidtest.data.source.local.entity.PostEntity
+import sanmi.labs.zemogaandroidtest.data.source.local.entity.PostWithComments
+import sanmi.labs.zemogaandroidtest.data.source.local.entity.UserEntity
+import sanmi.labs.zemogaandroidtest.data.source.local.entity.UserWithPostsAndComments
 
 @Dao
 interface ApplicationDatabaseDao {

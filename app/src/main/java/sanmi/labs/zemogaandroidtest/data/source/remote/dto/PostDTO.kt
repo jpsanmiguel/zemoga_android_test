@@ -1,6 +1,6 @@
-package sanmi.labs.zemogaandroidtest.network.dto
+package sanmi.labs.zemogaandroidtest.data.source.remote.dto
 
-import sanmi.labs.zemogaandroidtest.db.entity.PostEntity
+import sanmi.labs.zemogaandroidtest.data.source.local.entity.PostEntity
 
 data class PostDTO(
     val id: Long,

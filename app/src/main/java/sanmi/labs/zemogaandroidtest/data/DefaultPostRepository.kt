@@ -1,41 +1,42 @@
-package sanmi.labs.zemogaandroidtest.repository
+package sanmi.labs.zemogaandroidtest.data
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Transformations
-import sanmi.labs.zemogaandroidtest.db.ApplicationDatabaseDao
-import sanmi.labs.zemogaandroidtest.db.entity.CommentEntity
-import sanmi.labs.zemogaandroidtest.db.entity.PostCommentCrossRef
-import sanmi.labs.zemogaandroidtest.db.entity.PostEntity
-import sanmi.labs.zemogaandroidtest.db.entity.asDomainModel
-import sanmi.labs.zemogaandroidtest.db.entity.getCommentsByPostId
-import sanmi.labs.zemogaandroidtest.model.Post
-import sanmi.labs.zemogaandroidtest.model.PostDetail
-import sanmi.labs.zemogaandroidtest.model.User
-import sanmi.labs.zemogaandroidtest.model.asDatabaseModel
-import sanmi.labs.zemogaandroidtest.network.PostService
-import sanmi.labs.zemogaandroidtest.network.dto.CommentDTO
-import sanmi.labs.zemogaandroidtest.network.dto.asDatabaseModel
-import sanmi.labs.zemogaandroidtest.network.dto.asDomainModel
+import sanmi.labs.zemogaandroidtest.data.source.local.ApplicationDatabaseDao
+import sanmi.labs.zemogaandroidtest.data.source.local.entity.CommentEntity
+import sanmi.labs.zemogaandroidtest.data.source.local.entity.PostCommentCrossRef
+import sanmi.labs.zemogaandroidtest.data.source.local.entity.PostEntity
+import sanmi.labs.zemogaandroidtest.data.source.local.entity.asDomainModel
+import sanmi.labs.zemogaandroidtest.data.source.local.entity.getCommentsByPostId
+import sanmi.labs.zemogaandroidtest.domain.model.Post
+import sanmi.labs.zemogaandroidtest.domain.model.PostDetail
+import sanmi.labs.zemogaandroidtest.domain.model.User
+import sanmi.labs.zemogaandroidtest.domain.model.asDatabaseModel
+import sanmi.labs.zemogaandroidtest.data.source.remote.PostService
+import sanmi.labs.zemogaandroidtest.data.source.remote.dto.CommentDTO
+import sanmi.labs.zemogaandroidtest.data.source.remote.dto.asDatabaseModel
+import sanmi.labs.zemogaandroidtest.data.source.remote.dto.asDomainModel
+import sanmi.labs.zemogaandroidtest.domain.PostRepository
 import sanmi.labs.zemogaandroidtest.util.ConnectionLiveData
 
-class PostRepository(
+class DefaultPostRepository(
     private val dao: ApplicationDatabaseDao,
     private val service: PostService,
     private val connectionLiveData: ConnectionLiveData,
-) {
+) : PostRepository {
 
-    fun getPosts(): LiveData<List<Post>> {
+    override fun getPosts(): LiveData<List<Post>> {
         return Transformations.map(dao.getPosts()) {
             it.asDomainModel()
         }
     }
 
-    suspend fun refreshPosts() {
+    override suspend fun refreshPosts() {
         val networkPosts = service.getPosts()
         dao.insertAllPosts(*networkPosts.asDatabaseModel())
     }
 
-    suspend fun getPostDetail(post: Post): PostDetail {
+    override suspend fun getPostDetail(post: Post): PostDetail {
         val databaseUser = dao.getUserWithPostsAndComments(post.userId)
         var finalUser = databaseUser?.user?.asDomainModel()
         var finalComments = databaseUser?.getCommentsByPostId(post.id)
@@ -69,16 +70,16 @@ class PostRepository(
         )
     }
 
-    suspend fun updatePost(post: Post) {
+    override suspend fun updatePost(post: Post) {
         dao.updatePost(post.asDatabaseModel())
     }
 
-    suspend fun deletePost(postId: Long) {
+    override suspend fun deletePost(postId: Long) {
         dao.deleteComments(*getPostCommentEntities(postId).toTypedArray())
         dao.deletePost(getPostEntity(postId))
     }
 
-    suspend fun deleteAllPosts() {
+    override suspend fun deleteAllPosts() {
         dao.deleteAllComments()
         dao.deleteAllPosts()
         dao.deleteAllUsers()

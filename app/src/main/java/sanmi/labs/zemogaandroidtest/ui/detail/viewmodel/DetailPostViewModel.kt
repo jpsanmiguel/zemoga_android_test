@@ -4,15 +4,15 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
-import sanmi.labs.zemogaandroidtest.model.Post
-import sanmi.labs.zemogaandroidtest.model.PostDetail
-import sanmi.labs.zemogaandroidtest.repository.PostRepository
+import sanmi.labs.zemogaandroidtest.domain.model.Post
+import sanmi.labs.zemogaandroidtest.domain.model.PostDetail
+import sanmi.labs.zemogaandroidtest.data.DefaultPostRepository
 import sanmi.labs.zemogaandroidtest.util.BaseViewModel
 import sanmi.labs.zemogaandroidtest.util.Status
 import java.lang.Exception
 
 class DetailPostViewModel(
-    private val postsRepository: PostRepository,
+    private val postsRepository: DefaultPostRepository,
 ) : BaseViewModel() {
 
     private lateinit var post: Post

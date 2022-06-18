@@ -3,7 +3,7 @@ package sanmi.labs.zemogaandroidtest.ui.home.adapter
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
-import sanmi.labs.zemogaandroidtest.model.Post
+import sanmi.labs.zemogaandroidtest.domain.model.Post
 import sanmi.labs.zemogaandroidtest.ui.home.viewholder.PostViewHolder
 
 class PostAdapter(
