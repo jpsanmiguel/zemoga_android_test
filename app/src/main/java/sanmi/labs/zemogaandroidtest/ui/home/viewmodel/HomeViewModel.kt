@@ -5,12 +5,12 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import sanmi.labs.zemogaandroidtest.domain.model.Post
-import sanmi.labs.zemogaandroidtest.data.DefaultPostRepository
+import sanmi.labs.zemogaandroidtest.domain.PostRepository
 import sanmi.labs.zemogaandroidtest.util.BaseViewModel
 import sanmi.labs.zemogaandroidtest.util.Status
 
 class HomeViewModel(
-    private val postsRepository: DefaultPostRepository,
+    private val postsRepository: PostRepository,
 ) : BaseViewModel() {
 
     val posts = postsRepository.getPosts()

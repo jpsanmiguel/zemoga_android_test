@@ -6,13 +6,13 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import sanmi.labs.zemogaandroidtest.domain.model.Post
 import sanmi.labs.zemogaandroidtest.domain.model.PostDetail
-import sanmi.labs.zemogaandroidtest.data.DefaultPostRepository
+import sanmi.labs.zemogaandroidtest.domain.PostRepository
 import sanmi.labs.zemogaandroidtest.util.BaseViewModel
 import sanmi.labs.zemogaandroidtest.util.Status
 import java.lang.Exception
 
 class DetailPostViewModel(
-    private val postsRepository: DefaultPostRepository,
+    private val postsRepository: PostRepository,
 ) : BaseViewModel() {
 
     private lateinit var post: Post
