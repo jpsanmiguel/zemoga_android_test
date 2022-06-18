@@ -24,7 +24,7 @@ class HomeViewModel(
         refreshPosts()
     }
 
-    private fun refreshPosts() {
+    fun refreshPosts() {
         viewModelScope.launch {
             _status.value = try {
                 postsRepository.refreshPosts()
@@ -36,6 +36,20 @@ class HomeViewModel(
                     Status.Success
                 }
             }
+        }
+    }
+
+    fun clear() {
+        viewModelScope.launch {
+            postsRepository.deleteAllPosts()
+        }
+    }
+
+    fun checkEmptyState() {
+        if ((_status.value is Status.Success || _status.value is Status.Failed)
+            && posts.value.isNullOrEmpty()
+        ) {
+            _status.value = Status.Empty
         }
     }
 

@@ -78,6 +78,12 @@ class PostRepository(
         dao.deletePost(getPostEntity(postId))
     }
 
+    suspend fun deleteAllPosts() {
+        dao.deleteAllComments()
+        dao.deleteAllPosts()
+        dao.deleteAllUsers()
+    }
+
     private suspend fun getPostEntity(postId: Long): PostEntity {
         return dao.getPost(postId)
     }

@@ -51,4 +51,13 @@ interface ApplicationDatabaseDao {
     @Transaction
     @Query("SELECT * FROM post_table WHERE postId = :postId")
     suspend fun getPostWithComments(postId: Long): PostWithComments
+
+    @Query("DELETE FROM post_table")
+    suspend fun deleteAllPosts()
+
+    @Query("DELETE FROM user_table")
+    suspend fun deleteAllUsers()
+
+    @Query("DELETE FROM comment_table")
+    suspend fun deleteAllComments()
 }

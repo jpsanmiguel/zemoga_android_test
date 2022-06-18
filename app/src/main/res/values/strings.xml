@@ -11,4 +11,9 @@
     <string name="toggle_favorite_post_icon">Favorite</string>
     <string name="favorite_post_icon_indicator">Favorite post icon indicator</string>
     <string name="delete_post_icon">Delete</string>
+    <string name="delete_all_posts_floating_action_button">Delete all posts floating action button</string>
+    <string name="no_information">Oops! Looks like we don\'t have this information.</string>
+    <string name="check_internet_connection">Please check your internet connection.</string>
+    <string name="empty_state_text">Oops! Looks like there are no posts! Try to fetch some and check your internet connection.</string>
+    <string name="empty_state_image">Empty state image representation.</string>
 </resources>
