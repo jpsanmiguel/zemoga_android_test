@@ -26,65 +26,83 @@
             app:layout_constraintTop_toTopOf="parent"
             app:showIfLoading="@{viewModel.status}" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:showIfSuccess="@{viewModel.status}">
+            android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/fragment_detail_post_title"
-                android:layout_width="0dp"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
-                android:text="@{viewModel.postDetail.title}"
-                android:textColor="@color/black"
-                android:textSize="24sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:text="sunt aut facere repellat provident occaecati excepturi optio reprehenderit" />
+                app:showIfSuccess="@{viewModel.status}">
 
-            <TextView
-                android:id="@+id/fragment_detail_post_body"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="@{viewModel.postDetail.body}"
-                android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="@+id/fragment_detail_post_title"
-                app:layout_constraintStart_toStartOf="@+id/fragment_detail_post_title"
-                app:layout_constraintTop_toBottomOf="@+id/fragment_detail_post_title"
-                tools:text="quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto" />
+                <TextView
+                    android:id="@+id/fragment_detail_post_title"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:text="@{viewModel.postDetail.title}"
+                    android:textColor="@color/black"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="sunt aut facere repellat provident occaecati excepturi optio reprehenderit" />
 
-            <TextView
-                android:id="@+id/fragment_detail_post_user_title"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:text="@string/user_title"
-                android:textColor="@color/black"
-                android:textSize="24sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="@+id/fragment_detail_post_body"
-                app:layout_constraintStart_toStartOf="@+id/fragment_detail_post_body"
-                app:layout_constraintTop_toBottomOf="@+id/fragment_detail_post_body" />
+                <TextView
+                    android:id="@+id/fragment_detail_post_body"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@{viewModel.postDetail.body}"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="@+id/fragment_detail_post_title"
+                    app:layout_constraintStart_toStartOf="@+id/fragment_detail_post_title"
+                    app:layout_constraintTop_toBottomOf="@+id/fragment_detail_post_title"
+                    tools:text="quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto" />
 
-            <TextView
-                android:id="@+id/fragment_detail_post_comments_title"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:text="@string/comments_title"
-                android:textColor="@color/black"
-                android:textSize="24sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="@+id/fragment_detail_post_user_title"
-                app:layout_constraintStart_toStartOf="@+id/fragment_detail_post_user_title"
-                app:layout_constraintTop_toBottomOf="@+id/fragment_detail_post_user_title" />
+                <TextView
+                    android:id="@+id/fragment_detail_post_user_title"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:text="@string/user_title"
+                    android:textColor="@color/black"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="@+id/fragment_detail_post_body"
+                    app:layout_constraintStart_toStartOf="@+id/fragment_detail_post_body"
+                    app:layout_constraintTop_toBottomOf="@+id/fragment_detail_post_body" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                <TextView
+                    android:id="@+id/fragment_detail_post_comments_title"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:text="@string/comments_title"
+                    android:textColor="@color/black"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="@+id/fragment_detail_post_user_title"
+                    app:layout_constraintStart_toStartOf="@+id/fragment_detail_post_user_title"
+                    app:layout_constraintTop_toBottomOf="@+id/fragment_detail_post_user_title" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/fragment_detail_post_comments"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:nestedScrollingEnabled="false"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/fragment_detail_post_comments_title"
+                    tools:itemCount="10"
+                    tools:listitem="@layout/comment_item" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
