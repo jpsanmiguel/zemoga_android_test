@@ -67,6 +67,10 @@ class PostRepository(
         )
     }
 
+    suspend fun updatePost(post: Post) {
+        dao.updatePost(post.asDatabaseModel())
+    }
+
     private suspend fun getPostComments(postId: Long): List<CommentDTO> {
         return service.getPostComments(postId)
     }

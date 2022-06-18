@@ -8,4 +8,6 @@
     <string name="user_email">Email: %1$S</string>
     <string name="user_phone">Phone: %1$S</string>
     <string name="user_website">Website: %1$S</string>
+    <string name="toggle_favorite_post_icon">Favorite</string>
+    <string name="favorite_post_icon_indicator">Favorite post icon indicator</string>
 </resources>

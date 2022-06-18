@@ -15,11 +15,14 @@ class DetailPostViewModel(
     private val postsRepository: PostRepository,
 ) : BaseViewModel() {
 
+    private lateinit var post: Post
+
     private val _postDetail = MutableLiveData<PostDetail?>()
     val postDetail: LiveData<PostDetail?>
         get() = _postDetail
 
     fun initViewModel(post: Post) {
+        this.post = post
         viewModelScope.launch {
             _status.value = Status.Loading
             try {
@@ -33,5 +36,28 @@ class DetailPostViewModel(
     private suspend fun getPostDetail(post: Post) {
         _postDetail.value = postsRepository.getPostDetail(post)
         _status.value = Status.Success
+    }
+
+    fun isPostFavorite(): Boolean {
+        return _postDetail.value?.isFavorite == true
+    }
+
+    fun togglePostIsFavorite(): Boolean {
+        _postDetail.value = _postDetail.value?.apply {
+            isFavorite = !isFavorite
+            updatePost()
+            return isFavorite
+        }
+        return false
+    }
+
+    private fun updatePost() {
+        viewModelScope.launch {
+            _postDetail.value?.let {
+                postsRepository.updatePost(
+                    post.apply { isFavorite = it.isFavorite }
+                )
+            }
+        }
     }
 }
