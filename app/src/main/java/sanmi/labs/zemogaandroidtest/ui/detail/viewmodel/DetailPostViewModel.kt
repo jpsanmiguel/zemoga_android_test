@@ -6,29 +6,32 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import sanmi.labs.zemogaandroidtest.model.Post
 import sanmi.labs.zemogaandroidtest.model.PostDetail
-import sanmi.labs.zemogaandroidtest.network.PostService
-import sanmi.labs.zemogaandroidtest.network.dto.asDomainModel
+import sanmi.labs.zemogaandroidtest.repository.PostRepository
 import sanmi.labs.zemogaandroidtest.util.BaseViewModel
 import sanmi.labs.zemogaandroidtest.util.Status
+import java.lang.Exception
 
-class DetailPostViewModel(private val postService: PostService) : BaseViewModel() {
+class DetailPostViewModel(
+    private val postsRepository: PostRepository,
+) : BaseViewModel() {
 
-    private val _postDetail = MutableLiveData<PostDetail>()
-    val postDetail: LiveData<PostDetail>
+    private val _postDetail = MutableLiveData<PostDetail?>()
+    val postDetail: LiveData<PostDetail?>
         get() = _postDetail
 
     fun initViewModel(post: Post) {
-        _status.value = Status.Loading
         viewModelScope.launch {
-            _postDetail.value = PostDetail(
-                post.id,
-                postService.getPostUser(post.userId).asDomainModel(),
-                post.title,
-                post.body,
-                postService.getPostComments(post.id).asDomainModel(),
-                false
-            )
-            _status.value = Status.Success
+            _status.value = Status.Loading
+            try {
+                getPostDetail(post)
+            } catch (exception: Exception) {
+                _status.value = Status.Failed(exception)
+            }
         }
+    }
+
+    private suspend fun getPostDetail(post: Post) {
+        _postDetail.value = postsRepository.getPostDetail(post)
+        _status.value = Status.Success
     }
 }

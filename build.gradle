@@ -12,6 +12,7 @@ buildscript {
         coroutinesVersion = '1.5.2'
         navigationVersion = '2.4.2'
         koinVersion = '3.2.0'
+        roomVersion = '2.4.2'
     }
 
     dependencies {

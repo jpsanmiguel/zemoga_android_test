@@ -1,5 +1,7 @@
 package sanmi.labs.zemogaandroidtest.model
 
+import sanmi.labs.zemogaandroidtest.db.entity.UserEntity
+
 data class User(
     val id: Long,
     val name: String = "",
@@ -9,3 +11,7 @@ data class User(
     val website: String = "",
     val posts: MutableList<Post> = mutableListOf(),
 )
+
+fun User.asDatabaseModel(): UserEntity {
+    return UserEntity(id, name, username, email, phone, website)
+}

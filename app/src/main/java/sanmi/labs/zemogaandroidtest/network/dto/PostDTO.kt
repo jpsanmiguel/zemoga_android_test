@@ -1,6 +1,6 @@
 package sanmi.labs.zemogaandroidtest.network.dto
 
-import sanmi.labs.zemogaandroidtest.model.Post
+import sanmi.labs.zemogaandroidtest.db.entity.PostEntity
 
 data class PostDTO(
     val id: Long,
@@ -9,8 +9,11 @@ data class PostDTO(
     val body: String,
 )
 
-fun List<PostDTO>.asModel(): List<Post> {
+fun PostDTO.asDatabaseModel(): PostEntity =
+    PostEntity(id, userId, title, body, false)
+
+fun List<PostDTO>.asDatabaseModel(): Array<PostEntity> {
     return map {
-        Post(it.id, it.userId, it.title, it.body)
-    }
+        it.asDatabaseModel()
+    }.toTypedArray()
 }

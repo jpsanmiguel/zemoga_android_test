@@ -5,16 +5,15 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import sanmi.labs.zemogaandroidtest.model.Post
-import sanmi.labs.zemogaandroidtest.network.PostService
-import sanmi.labs.zemogaandroidtest.network.dto.asModel
+import sanmi.labs.zemogaandroidtest.repository.PostRepository
 import sanmi.labs.zemogaandroidtest.util.BaseViewModel
 import sanmi.labs.zemogaandroidtest.util.Status
 
-class HomeViewModel(private val postService: PostService) : BaseViewModel() {
+class HomeViewModel(
+    private val postsRepository: PostRepository,
+) : BaseViewModel() {
 
-    private val _posts = MutableLiveData<List<Post>>()
-    val posts: LiveData<List<Post>>
-        get() = _posts
+    val posts = postsRepository.getPosts()
 
     private val _post = MutableLiveData<Post?>()
     val post: LiveData<Post?>
@@ -22,16 +21,20 @@ class HomeViewModel(private val postService: PostService) : BaseViewModel() {
 
     init {
         _status.value = Status.Loading
-        getPosts()
+        refreshPosts()
     }
 
-    private fun getPosts() {
+    private fun refreshPosts() {
         viewModelScope.launch {
             _status.value = try {
-                _posts.value = postService.getPosts().asModel()
+                postsRepository.refreshPosts()
                 Status.Success
             } catch (exception: Exception) {
-                Status.Failed(exception)
+                if (posts.value.isNullOrEmpty()) {
+                    Status.Failed(exception)
+                } else {
+                    Status.Success
+                }
             }
         }
     }
