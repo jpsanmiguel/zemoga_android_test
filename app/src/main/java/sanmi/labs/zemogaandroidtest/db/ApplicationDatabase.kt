@@ -9,12 +9,14 @@ import sanmi.labs.zemogaandroidtest.db.entity.CommentEntity
 import sanmi.labs.zemogaandroidtest.db.entity.PostCommentCrossRef
 import sanmi.labs.zemogaandroidtest.db.entity.PostEntity
 import sanmi.labs.zemogaandroidtest.db.entity.UserEntity
+import sanmi.labs.zemogaandroidtest.db.entity.typeconverters.Converters
 
 @Database(
     entities = [PostEntity::class, UserEntity::class, CommentEntity::class, PostCommentCrossRef::class],
     version = 1,
     exportSchema = false
 )
+@TypeConverters(Converters::class)
 abstract class ApplicationDatabase : RoomDatabase() {
     abstract val applicationDatabaseDao: ApplicationDatabaseDao
 

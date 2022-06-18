@@ -3,6 +3,7 @@ package sanmi.labs.zemogaandroidtest.model
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 import sanmi.labs.zemogaandroidtest.db.entity.PostEntity
+import java.util.Date
 
 @Parcelize
 data class Post(
@@ -14,5 +15,5 @@ data class Post(
 ) : Parcelable
 
 fun Post.asDatabaseModel(): PostEntity {
-    return PostEntity(id, userId, title, body, isFavorite)
+    return PostEntity(id, userId, title, body, isFavorite, Date())
 }

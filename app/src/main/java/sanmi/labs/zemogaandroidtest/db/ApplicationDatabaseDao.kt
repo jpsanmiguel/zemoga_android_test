@@ -17,7 +17,7 @@ import sanmi.labs.zemogaandroidtest.db.entity.UserWithPostsAndComments
 
 @Dao
 interface ApplicationDatabaseDao {
-    @Query("SELECT * FROM post_table ORDER BY isFavorite DESC")
+    @Query("SELECT * FROM post_table ORDER BY isFavorite DESC, modifiedDate ASC")
     fun getPosts(): LiveData<List<PostEntity>>
 
     @Transaction
