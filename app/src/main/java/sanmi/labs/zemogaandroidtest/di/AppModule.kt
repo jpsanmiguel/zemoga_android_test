@@ -11,5 +11,5 @@ val appModule = module {
     single { PostService.create() }
 
     viewModel { HomeViewModel(get()) }
-    viewModel { DetailPostViewModel() }
+    viewModel { DetailPostViewModel(get()) }
 }
