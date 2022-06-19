@@ -5,6 +5,8 @@
 
 Clone the repo, open the project in Android Studio, hit "Run". Done!
 
+It should be as simple as that, really. But since sometimes things go wrong, here is a link to an [APK](https://github.com/jpsanmiguel/zemoga_android_test/blob/main/apk/app-debug.apk) of the application just in case so you can still test it.
+
 ## Architecture
 
 For this app, the architecture followed was the [architecture recommended by Google for Android Applications](https://developer.android.com/topic/architecture). The app is mainly divided in three main layers: 
