@@ -12,8 +12,12 @@ data class Post(
     val title: String,
     val body: String,
     var isFavorite: Boolean,
-) : Parcelable
+) : Parcelable {
+    fun getDateIfFavorite(): Date? {
+        return if (isFavorite) Date() else null
+    }
+}
 
 fun Post.asDatabaseModel(): PostEntity {
-    return PostEntity(id, userId, title, body, isFavorite, Date())
+    return PostEntity(id, userId, title, body, isFavorite, getDateIfFavorite())
 }
