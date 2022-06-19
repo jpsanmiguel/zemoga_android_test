@@ -22,7 +22,7 @@ import sanmi.labs.zemogaandroidtest.util.ConnectionLiveData
 class DefaultPostRepository(
     private val dao: ApplicationDatabaseDao,
     private val service: PostService,
-    private val connectionLiveData: ConnectionLiveData,
+    private val connectionLiveData: ConnectionLiveData? = null,
 ) : PostRepository {
 
     override fun getPosts(): LiveData<List<Post>> {
@@ -40,7 +40,7 @@ class DefaultPostRepository(
         val databaseUser = dao.getUserWithPostsAndComments(post.userId)
         var finalUser = databaseUser?.user?.asDomainModel()
         var finalComments = databaseUser?.getCommentsByPostId(post.id)
-        if (connectionLiveData.hasInternetConnection()) {
+        if (connectionLiveData?.hasInternetConnection() == true) {
             val comments = getPostComments(post.id)
             val user = getPostUser(post.userId)
 
